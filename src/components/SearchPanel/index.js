@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-import './search-panel.css';
-
-import React from 'react';
+import './search-panel.scss';
 
 const SearchPanel = ({ onUpdateSearchFromApp }) => {
   const [searchValue, setSearchValue] = useState('');

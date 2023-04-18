@@ -1,8 +1,8 @@
-import './app-info.css';
+import './app-header.scss';
 
-const AppInfo = ({ emplNumb, incrNumb }) => {
+const AppHeader = ({ emplNumb, incrNumb }) => {
   return (
-    <div className="app-info">
+    <div className='app-header'>
       <h1>Облік працівників в компанії N</h1>
       <h2>Загальна кількість працівників: {emplNumb}</h2>
       <h2>Премію отримають: {incrNumb}</h2>
@@ -10,4 +10,4 @@ const AppInfo = ({ emplNumb, incrNumb }) => {
   );
 };
 
-export default AppInfo;
+export default AppHeader;

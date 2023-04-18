@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import './employees-add-form.scss';
 
-import React from 'react';
-
 const EmployeesAddForm = ({ onAdd }) => {
   const [name, setName] = useState('');
   const [salary, setSalary] = useState('');

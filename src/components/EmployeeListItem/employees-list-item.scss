@@ -1,6 +1,8 @@
+@import '../../scss/variables.scss';
+
 .list-group-item {
   padding: 15px 20px;
-  border-bottom: 1px solid #3d5a80;
+  border-bottom: 1px solid $bg-color;
 }
 
 .list-group-item:last-child {
@@ -11,7 +13,7 @@
   line-height: 35px;
   font-size: 20px;
   cursor: pointer;
-  min-width: 550px;
+  min-width: 400px;
 }
 
 .list-group-item input {
@@ -31,11 +33,11 @@
 }
 
 .list-group-item .btn-cookie {
-  color: #e09f3e;
+  color: $coockie;
 }
 
 .list-group-item .btn-trash {
-  color: #e5383b;
+  color: $trash;
 }
 
 .list-group-item .fa-star {
@@ -44,7 +46,7 @@
   text-align: center;
   line-height: 35px;
   font-size: 16px;
-  color: #ffd700;
+  color: $star;
   transition: 0.3s all;
   transform: translateX(30px);
   opacity: 0;
@@ -57,7 +59,7 @@
 
 .list-group-item.increase .list-group-item-label,
 .list-group-item.increase .list-group-item-input {
-  color: #e09f3e;
+  color: $increase;
 }
 
 .list-group-item.increase .btn-star {
