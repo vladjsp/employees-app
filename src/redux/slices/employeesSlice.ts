@@ -1,5 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getTotalEmployeesAmount, getToIncreaseAmount } from '../../utils';
+
+export interface IDataList {
+  name: string;
+  salary: number;
+  increase: boolean;
+  rise: boolean;
+  id: number;
+}
 
 const initialState = {
   employeesList: [
@@ -10,7 +18,7 @@ const initialState = {
     { name: 'Carla E.', salary: 4200, increase: false, rise: true, id: 5 },
     { name: 'Clark L.', salary: 3200, increase: true, rise: false, id: 6 },
     { name: 'Jonathan A.', salary: 3100, increase: false, rise: false, id: 7 },
-  ],
+  ] as IDataList[],
   nextId: 8,
   toIncreaseAmount: 0,
   totalEmployeesAmount: 0,
@@ -26,7 +34,7 @@ const employeesSlice = createSlice({
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
     },
-    addEmployee(state, action) {
+    addEmployee(state, action: PayloadAction<{ name: string; salary: number }>) {
       console.log('addEmployee action.payload', action.payload);
 
       const newItem = {
@@ -40,24 +48,25 @@ const employeesSlice = createSlice({
       state.nextId++;
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
     },
-    deleteEmployee(state, action) {
+    deleteEmployee(state, action: PayloadAction<number>) {
       state.employeesList = state.employeesList.filter((item) => item.id !== action.payload);
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
     },
-    onToggleProp(state, action) {
+    onToggleProp(state, action: PayloadAction<{ id: number; prop: any }>) {
       state.employeesList = state.employeesList.map((item) => {
         if (item.id === action.payload.id) {
+          //@ts-ignore
           return { ...item, [action.payload.prop]: !item[action.payload.prop] };
         }
         return item;
       });
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
     },
-    setSearchValue(state, action) {
+    setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
-    setFilter(state, action) {
+    setFilter(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
   },

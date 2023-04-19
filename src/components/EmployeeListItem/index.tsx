@@ -1,16 +1,17 @@
-import { deleteEmployee, onToggleProp } from '../../redux/slices/employeesSlice';
+import { IDataList, deleteEmployee, onToggleProp } from '../../redux/slices/employeesSlice';
 import { useDispatch } from 'react-redux';
 
 import './employees-list-item.scss';
 
-const EmployeesListItem = ({ id, name, salary, increase, rise }) => {
+const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
   const dispatch = useDispatch();
 
-  const deleteItem = (id) => {
+  const deleteItem = (id: number) => {
     dispatch(deleteEmployee(id));
   };
 
-  const onToggleEmployeeProp = (prop) => {
+  //should avoid any
+  const onToggleEmployeeProp = (prop: any) => {
     dispatch(onToggleProp({ id, prop }));
   };
 
@@ -27,7 +28,8 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }) => {
       <span
         className='list-group-item-label'
         onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle'))}
-        data-toggle='rise'>
+        data-toggle='rise'
+      >
         {name}
       </span>
       <input type='text' className='list-group-item-input' defaultValue={salary + '$'} />
@@ -36,7 +38,8 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }) => {
           type='button'
           className='btn-cookie btn-sm'
           onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle'))}
-          data-toggle='increase'>
+          data-toggle='increase'
+        >
           <i className='fas fa-cookie'></i>
         </button>
 

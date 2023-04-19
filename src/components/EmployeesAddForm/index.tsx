@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { addEmployee } from '../../redux/slices/employeesSlice';
 import { useDispatch } from 'react-redux';
 
@@ -7,21 +7,21 @@ import './employees-add-form.scss';
 const EmployeesAddForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
-  const [salary, setSalary] = useState('');
+  const [salary, setSalary] = useState(0);
 
-  const onNameInput = (e) => {
+  const onNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-  const onSalaryInput = (e) => {
+  const onSalaryInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSalary(Number(e.target.value));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    if (name.length >= 2 && salary >= 300) {
+    if (name.length >= 2 && Number(salary) >= 300) {
       dispatch(addEmployee({ name, salary }));
       setName('');
-      setSalary('');
+      setSalary(0);
     } else {
       alert('Please enter a valid name (more than 3 letters) or salary (>=300)');
       return;

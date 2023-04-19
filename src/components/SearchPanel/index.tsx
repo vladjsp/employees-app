@@ -10,7 +10,7 @@ const SearchPanel = () => {
   const [searchText, setSearchText] = useState('');
 
   //should think how to reduce the number of renders
-  const handleSearchInput = (e) => {
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchText = e.target.value;
     setSearchText(searchText);
     dispatch(setSearchValue(searchText));

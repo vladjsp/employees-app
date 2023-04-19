@@ -1,3 +1,4 @@
+import { RootState } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setFilter } from '../../redux/slices/employeesSlice';
@@ -5,7 +6,7 @@ import './app-filter.scss';
 
 const AppFilter = () => {
   const dispatch = useDispatch();
-  const { filter } = useSelector((state) => state.employees);
+  const { filter } = useSelector((state: RootState) => state.employees);
 
   const buttonsData = [
     { name: 'all', label: 'Всі працівники' },
@@ -13,8 +14,8 @@ const AppFilter = () => {
     { name: 'lessThan', label: 'З/П менше 2000$' },
   ];
 
-  const onFilterSelect = (selectedFilter) => {
-    console.log('selectedFilter --->', selectedFilter);
+  const onFilterSelect = (selectedFilter: string) => {
+    //console.log('selectedFilter --->', selectedFilter);
 
     dispatch(setFilter(selectedFilter));
   };

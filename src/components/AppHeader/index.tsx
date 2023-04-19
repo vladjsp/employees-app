@@ -1,9 +1,12 @@
+import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 
 import './app-header.scss';
 
 const AppHeader = () => {
-  const { toIncreaseAmount, totalEmployeesAmount } = useSelector((state) => state.employees);
+  const { toIncreaseAmount, totalEmployeesAmount } = useSelector(
+    (state: RootState) => state.employees
+  );
   return (
     <div className='app-header'>
       <h1>Облік працівників в компанії N</h1>

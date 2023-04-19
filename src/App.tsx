@@ -22,8 +22,8 @@ const App = () => {
     <div className='app'>
       <AppInfo />
       <div className='search-panel'>
-        <SearchPanel /*onUpdateSearchFromApp={onUpdateSearchFromApp}*/ />
-        <AppFilter /*filter={filter} onFilterSelect={onFilterSelect}*/ />
+        <SearchPanel />
+        <AppFilter />
       </div>
       <EmployeesList />
       <EmployeesAddForm />
