@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { addEmployee } from '../../redux/slices/employeesSlice';
+import { useDispatch } from 'react-redux';
+
 import './employees-add-form.scss';
 
-const EmployeesAddForm = ({ onAdd }) => {
+const EmployeesAddForm = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [salary, setSalary] = useState('');
 
@@ -9,13 +13,13 @@ const EmployeesAddForm = ({ onAdd }) => {
     setName(e.target.value);
   };
   const onSalaryInput = (e) => {
-    setSalary(e.target.value);
+    setSalary(Number(e.target.value));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name.length >= 3 && salary >= 300) {
-      onAdd(name, salary);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (name.length >= 2 && salary >= 300) {
+      dispatch(addEmployee({ name, salary }));
       setName('');
       setSalary('');
     } else {

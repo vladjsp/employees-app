@@ -1,11 +1,23 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setFilter } from '../../redux/slices/employeesSlice';
 import './app-filter.scss';
 
-const AppFilter = ({ filter, onFilterSelect }) => {
+const AppFilter = () => {
+  const dispatch = useDispatch();
+  const { filter } = useSelector((state) => state.employees);
+
   const buttonsData = [
     { name: 'all', label: 'Всі працівники' },
     { name: 'rise', label: 'На підвищення' },
-    { name: 'moreThan', label: 'З/П більше 1000$' },
+    { name: 'lessThan', label: 'З/П менше 2000$' },
   ];
+
+  const onFilterSelect = (selectedFilter) => {
+    console.log('selectedFilter --->', selectedFilter);
+
+    dispatch(setFilter(selectedFilter));
+  };
 
   const buttons = buttonsData.map((item) => {
     const active = filter === item.name;
