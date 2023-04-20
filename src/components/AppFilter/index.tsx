@@ -15,8 +15,6 @@ const AppFilter = () => {
   ];
 
   const onFilterSelect = (selectedFilter: string) => {
-    //console.log('selectedFilter --->', selectedFilter);
-
     dispatch(setFilter(selectedFilter));
   };
 

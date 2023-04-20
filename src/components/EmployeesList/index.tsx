@@ -2,14 +2,14 @@ import EmployeesListItem from '../EmployeeListItem';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { IDataList } from '../../redux/slices/employeesSlice';
+import { IEmployeeObj } from '../../redux/slices/employeesSlice';
 
 import './employees-list.scss';
 
 const EmployeesList = () => {
   const { employeesList, searchValue, filter } = useSelector((state: RootState) => state.employees);
 
-  const getFilteredList = (items: IDataList[], filter: string) => {
+  const getFilteredList = (items: IEmployeeObj[], filter: string) => {
     switch (filter) {
       case 'rise':
         return items.filter((item) => item.rise === true);

@@ -1,9 +1,9 @@
-import { IDataList, deleteEmployee, onToggleProp } from '../../redux/slices/employeesSlice';
+import { IEmployeeObj, deleteEmployee, onToggleProp } from '../../redux/slices/employeesSlice';
 import { useDispatch } from 'react-redux';
 
 import './employees-list-item.scss';
 
-const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
+const EmployeesListItem = ({ id, name, salary, increase, rise }: IEmployeeObj) => {
   const dispatch = useDispatch();
 
   const deleteItem = (id: number) => {
@@ -12,7 +12,6 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
 
   //should avoid any
   const onToggleEmployeeProp = (prop: string) => {
-    console.log(typeof prop, prop);
     if (prop === 'rise' || prop === 'increase') {
       dispatch(onToggleProp({ id, prop }));
     }

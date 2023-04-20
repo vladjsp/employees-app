@@ -9,7 +9,7 @@ const AppHeader = () => {
   );
   return (
     <div className='app-header'>
-      <h1>Облік працівників в компанії N</h1>
+      <h1>Облік працівників у компанії N</h1>
       <h2>Загальна кількість працівників: {totalEmployeesAmount}</h2>
       <h2>Премію отримають: {toIncreaseAmount}</h2>
     </div>

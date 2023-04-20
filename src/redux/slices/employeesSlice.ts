@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getTotalEmployeesAmount, getToIncreaseAmount } from '../../utils';
 
-export interface IDataList {
+export interface IEmployeeObj {
   name: string;
   salary: number;
   increase: boolean;
@@ -10,14 +10,14 @@ export interface IDataList {
 }
 const initialState = {
   employeesList: [
-    { name: 'Robert L.', salary: 1800, increase: true, rise: true, id: 1 },
-    { name: 'John C.', salary: 3800, increase: false, rise: true, id: 2 },
-    { name: 'Carlos K.', salary: 4400, increase: false, rise: false, id: 3 },
-    { name: 'Carl B.', salary: 4600, increase: true, rise: false, id: 4 },
-    { name: 'Carla E.', salary: 4200, increase: false, rise: true, id: 5 },
-    { name: 'Clark L.', salary: 3200, increase: true, rise: false, id: 6 },
-    { name: 'Jonathan A.', salary: 3100, increase: false, rise: false, id: 7 },
-  ] as IDataList[],
+    { name: 'Olena L.', salary: 1800, increase: true, rise: true, id: 1 },
+    { name: 'Olga C.', salary: 3800, increase: false, rise: true, id: 2 },
+    { name: 'Roman K.', salary: 4400, increase: false, rise: false, id: 3 },
+    { name: 'Vlad B.', salary: 4600, increase: true, rise: false, id: 4 },
+    { name: 'Oleksandr E.', salary: 4200, increase: false, rise: true, id: 5 },
+    { name: 'Ruslan L.', salary: 3200, increase: true, rise: false, id: 6 },
+    { name: 'Viktoriia A.', salary: 3100, increase: false, rise: false, id: 7 },
+  ] as IEmployeeObj[],
   nextId: 8,
   toIncreaseAmount: 0,
   totalEmployeesAmount: 0,
@@ -34,8 +34,6 @@ const employeesSlice = createSlice({
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
     },
     addEmployee(state, action: PayloadAction<{ name: string; salary: number }>) {
-      console.log('addEmployee action.payload', action.payload);
-
       const newItem = {
         name: action.payload.name,
         salary: action.payload.salary,
