@@ -11,8 +11,11 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
   };
 
   //should avoid any
-  const onToggleEmployeeProp = (prop: any) => {
-    dispatch(onToggleProp({ id, prop }));
+  const onToggleEmployeeProp = (prop: string) => {
+    console.log(typeof prop, prop);
+    if (prop === 'rise' || prop === 'increase') {
+      dispatch(onToggleProp({ id, prop }));
+    }
   };
 
   let classNames = 'list-group-item d-flex justify-content-between';
@@ -27,9 +30,8 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
     <li className={classNames}>
       <span
         className='list-group-item-label'
-        onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle'))}
-        data-toggle='rise'
-      >
+        onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle')!)}
+        data-toggle='rise'>
         {name}
       </span>
       <input type='text' className='list-group-item-input' defaultValue={salary + '$'} />
@@ -37,9 +39,8 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }: IDataList) => {
         <button
           type='button'
           className='btn-cookie btn-sm'
-          onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle'))}
-          data-toggle='increase'
-        >
+          onClick={(e) => onToggleEmployeeProp(e.currentTarget.getAttribute('data-toggle')!)}
+          data-toggle='increase'>
           <i className='fas fa-cookie'></i>
         </button>
 

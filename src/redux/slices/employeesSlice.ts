@@ -8,7 +8,6 @@ export interface IDataList {
   rise: boolean;
   id: number;
 }
-
 const initialState = {
   employeesList: [
     { name: 'Robert L.', salary: 1800, increase: true, rise: true, id: 1 },
@@ -53,11 +52,13 @@ const employeesSlice = createSlice({
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
     },
-    onToggleProp(state, action: PayloadAction<{ id: number; prop: any }>) {
+    onToggleProp(state, action: PayloadAction<{ id: number; prop: string }>) {
       state.employeesList = state.employeesList.map((item) => {
         if (item.id === action.payload.id) {
-          //@ts-ignore
-          return { ...item, [action.payload.prop]: !item[action.payload.prop] };
+          return {
+            ...item,
+            [action.payload.prop]: !item[action.payload.prop as keyof typeof item],
+          };
         }
         return item;
       });
