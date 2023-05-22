@@ -14,7 +14,7 @@ const EmployeesList = () => {
       case 'rise':
         return items.filter((item) => item.rise === true);
       case 'lessThan':
-        return items.filter((item) => item.salary < 2000);
+        return items.filter((item) => Number(item.salary) < 2000);
       default:
         return items;
     }
