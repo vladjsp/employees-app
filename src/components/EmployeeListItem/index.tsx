@@ -33,7 +33,7 @@ const EmployeesListItem = ({ id, name, salary, increase, rise }: IEmployeeObj) =
         data-toggle='rise'>
         {name}
       </span>
-      <input type='text' className='list-group-item-input' defaultValue={salary + '$'} />
+      <p className='list-group-item-input'>{salary + '$'}</p>
       <div className='d-flex justify-content-center align-items-center'>
         <button
           type='button'
