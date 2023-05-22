@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getTotalEmployeesAmount, getToIncreaseAmount } from '../../utils';
+import { getTotalEmployeesAmount, getToIncreaseAmount, getToRiseAmount } from '../../utils';
 
 export interface IEmployeeObj {
   name: string;
@@ -20,6 +20,7 @@ const initialState = {
   ] as IEmployeeObj[],
   nextId: 8,
   toIncreaseAmount: 0,
+  toRiseAmount: 0,
   totalEmployeesAmount: 0,
   searchValue: '',
   filter: 'all',
@@ -32,6 +33,7 @@ const employeesSlice = createSlice({
     initStateChanger(state) {
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
+      state.toRiseAmount = getToRiseAmount(state.employeesList);
     },
     addEmployee(state, action: PayloadAction<{ name: string; salary: string }>) {
       const newItem = {
@@ -49,6 +51,7 @@ const employeesSlice = createSlice({
       state.employeesList = state.employeesList.filter((item) => item.id !== action.payload);
       state.totalEmployeesAmount = getTotalEmployeesAmount(state.employeesList);
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
+      state.toRiseAmount = getToRiseAmount(state.employeesList);
     },
     onToggleProp(state, action: PayloadAction<{ id: number; prop: string }>) {
       state.employeesList = state.employeesList.map((item) => {
@@ -61,6 +64,7 @@ const employeesSlice = createSlice({
         return item;
       });
       state.toIncreaseAmount = getToIncreaseAmount(state.employeesList);
+      state.toRiseAmount = getToRiseAmount(state.employeesList);
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
